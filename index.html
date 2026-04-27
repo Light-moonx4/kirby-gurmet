@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  Fusion Gourmet — Gastronomic Festival Landing Page
+  
+  Structure:
+    <header>  — Logo, site title, hamburger button, navigation links
+    <main>
+      #inicio       — Hero section with background image and CTA button
+      #chefs        — Schedule table with chef sessions
+      #festival     — "Festin Gourmet" section with Kirby image and festival info
+      #galeria      — Image gallery grid (6 gourmet photos from Unsplash)
+      .multimedia   — YouTube video thumbnail linking to YouTube
+    </main>
+    <footer id="contacto"> — Contact info, social links, copyright
+
+  Fonts used (Google Fonts):
+    - Playfair Display → headings (elegant serif)
+    - Lato            → body text (clean sans-serif)
+
+  External assets:
+    - Gallery images: Unsplash (free, no attribution required for landing pages)
+    - Video thumbnail: YouTube image API (img.youtube.com)
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures correct scaling on all mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusión Gourmet</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts: Playfair Display (headings) + Lato (body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- =====================================================
+         HEADER
+         Contains: logo image, site title, hamburger toggle
+         button (visible only on mobile), and the main nav.
+         The nav hides on mobile and becomes a dropdown when
+         the .active class is toggled by script.js.
+    ====================================================== -->
+    <header>
+        <!-- Festival logo -->
+        <img src="img/logo.png" alt="Fusion Gourmet logo">
+
+        <!-- Site title shown beside the logo -->
+        <h1>Fusion gourmet</h1>
+
+        <!-- Hamburger button — hidden on desktop, visible on mobile.
+             The JS swaps its icon between ☰ and ✕ when toggled. -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">&#9776;</button>
+
+        <!-- Main navigation.
+             On desktop: displayed as a horizontal flex row.
+             On mobile:  hidden by default; shown when .active is added. -->
+        <nav id="mainNav">
+            <a href="#inicio">Inicio</a><hr>
+            <a href="#chefs">Chefs</a><hr>
+            <a href="#galeria">Galeria</a><hr>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Decorative separator line in plum color -->
+    <hr class="linea">
+
+    <main>
+
+        <!-- =====================================================
+             HERO SECTION (#inicio)
+             Full-width background image with an overlaid
+             heading and a CTA button to reserve tickets.
+        ====================================================== -->
+        <section id="inicio">
+            <div class="imagen">
+                <!-- Main background photo -->
+                <img src="img/fondo.jpg" alt="Gourmet festival background">
+
+                <!-- Headline overlaid on top of the image -->
+                <h1>SABORES GOURMET UNICO</h1>
+
+                <!-- Call-to-action button -->
+                <button>Reservar ticket</button>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SCHEDULE SECTION (#chefs)
+             HTML table listing all chef sessions for the day.
+             The .tabla-contenedor wrapper allows horizontal
+             scroll on small screens so the table never breaks.
+        ====================================================== -->
+        <section class="principal" id="chefs">
+            <div class="principal-inner">
+                <h2>Horarios de Atención</h2>
+                <div class="tabla-contenedor">
+                    <!-- Semantic table: thead for column headers,
+                         tbody for data rows -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Chef</th>
+                                <th>Tema</th>
+                                <th>Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Each row = one chef session -->
+                            <tr>
+                                <td>9:00 AM</td>
+                                <td>Chef Marco Aurelio</td>
+                                <td>Alta cocina mediterránea</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 AM</td>
+                                <td>Chef Lucía Fernández</td>
+                                <td>Fusión asiática contemporánea</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>1:00 PM</td>
+                                <td>Chef André Moreau</td>
+                                <td>Repostería de vanguardia</td>
+                                <td>35</td>
+                            </tr>
+                            <tr>
+                                <td>3:00 PM</td>
+                                <td>Chef Valentina Cruz</td>
+                                <td>Cata de vinos y maridaje</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>5:00 PM</td>
+                                <td>Chef Hiroshi Tanaka</td>
+                                <td>Cocina molecular</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <td>7:00 PM</td>
+                                <td>Chef Isabella Rossi</td>
+                                <td>Gran menú de cierre</td>
+                                <td>80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.tabla-contenedor -->
+            </div>
+        </section>
+
+        <!-- =====================================================
+             FESTIN GOURMET SECTION (#festival)
+             Two-column layout: text on the left, decorative
+             character image (Kirby cooking) on the right.
+             On mobile, columns stack vertically.
+        ====================================================== -->
+        <section class="festival" id="festival">
+            <div class="festival-contenido">
+
+                <!-- Left column: title, description, and feature list -->
+                <div class="festival-texto">
+                    <h2>Festín Gourmet</h2>
+                    <p>Bienvenido al evento culinario más esperado del año. Fusión Gourmet reúne a los mejores chefs del mundo para ofrecerte una experiencia gastronómica única, llena de sabores, aromas y creatividad.</p>
+
+                    <!-- Semantic unordered list of festival highlights / sponsors -->
+                    <ul class="valores">
+                        <li>Ingredientes de temporada y sostenibles</li>
+                        <li>Técnicas innovadoras de alta cocina</li>
+                        <li>Experiencias únicas e irrepetibles</li>
+                        <li>Patrocinado por: CulinaryWorld, GastroArt y FoodLab</li>
+                    </ul>
+                </div>
+
+                <!-- Right column: Kirby cooking character image -->
+                <div class="festival-imagen">
+                    <img src="img/imagen.png" alt="Kirby cooking character" class="kirby-img">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             GALLERY SECTION (#galeria)
+             CSS Grid with 3 columns (desktop) → 2 (tablet)
+             → 1 (mobile). Each card has a hover overlay that
+             fades in with the dish label.
+             Images sourced from Unsplash (free to use).
+        ====================================================== -->
+        <section class="galeria-seccion" id="galeria">
+            <h2>Galería</h2>
+            <div class="galeria-grid">
+
+                <!-- Each <article> is one gallery card.
+                     <article> is used because each card is a
+                     self-contained piece of content. -->
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Fine dining plate — Mediterranean">
+                    <!-- Overlay label revealed on hover -->
+                    <div class="galeria-overlay"><span>Alta Cocina</span></div>
+                </article>
+
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Colorful gourmet dish">
+                    <div class="galeria-overlay"><span>Sabores Únicos</span></div>
+                </article>
+
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Fresh ingredients plate">
+                    <div class="galeria-overlay"><span>Frescura Natural</span></div>
+                </article>
+
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Pizza gourmet">
+                    <div class="galeria-overlay"><span>Fusión Perfecta</span></div>
+                </article>
+
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Chef plating a dish">
+                    <div class="galeria-overlay"><span>Arte Culinario</span></div>
+                </article>
+
+                <article class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="Breakfast gourmet plate">
+                    <div class="galeria-overlay"><span>Experiencia Total</span></div>
+                </article>
+
+            </div><!-- /.galeria-grid -->
+        </section>
+
+        <!-- =====================================================
+             MULTIMEDIA / VIDEO SECTION
+             Displays a YouTube video thumbnail. Clicking it
+             opens the video on YouTube in a new tab.
+             Uses the YouTube image API to auto-fetch the
+             HD thumbnail without embedding an iframe.
+        ====================================================== -->
+        <section class="multimedia-seccion">
+            <h2>Mira Nuestra Cocina</h2>
+            <p class="multimedia-desc">Descubre el arte detrás de cada plato. Haz clic en el video para ver la magia en acción.</p>
+            <div class="video-contenedor">
+                <!-- Link opens the YouTube video in a new tab (target="_blank").
+                     rel="noopener" is a security best practice when using
+                     target="_blank" to prevent tab-napping. -->
+                <a href="https://youtu.be/3OFjd_KAfY8?si=KmzDGfPkHn0bC_1_"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="video-link"
+                   aria-label="Watch gourmet cooking video on YouTube">
+                    <!-- Thumbnail auto-generated by YouTube's image API -->
+                    <img src="https://img.youtube.com/vi/3OFjd_KAfY8/maxresdefault.jpg"
+                         alt="Gourmet cooking video thumbnail"
+                         class="video-thumbnail">
+                    <!-- Custom play button overlaid on the thumbnail -->
+                    <div class="play-btn" aria-hidden="true">&#9654;</div>
+                </a>
+            </div><!-- /.video-contenedor -->
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER (#contacto)
+         Three-column grid: brand info, contact details,
+         social media links. Collapses to one column on mobile.
+    ====================================================== -->
+    <footer id="contacto">
+        <div class="footer-grid">
+
+            <!-- Column 1: Brand blurb -->
+            <div class="footer-col">
+                <h3>Fusión Gourmet</h3>
+                <p>El festival gastronómico de vanguardia más importante de la región. Una experiencia culinaria sin igual.</p>
+            </div>
+
+            <!-- Column 2: Contact information -->
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>info@fusiongourmet.com</li>
+                    <li>+57 300 123 4567</li>
+                    <li>Barranquilla, Colombia</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Social media links -->
+            <div class="footer-col">
+                <h3>Redes Sociales</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+
+        </div><!-- /.footer-grid -->
+
+        <!-- Copyright notice -->
+        <p class="footer-copy">2026 Fusión Gourmet. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Main JavaScript file — loaded at the end of <body>
+         so the DOM is fully parsed before the script runs -->
+    <script src="script.js"></script>
+</body>
+</html>
